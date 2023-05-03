@@ -10,7 +10,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 public class IDDatabase {
+    //creates an arrayList named database
     protected ArrayList<ID> database = new ArrayList<ID>();
+    //Scanner object is created
     Scanner scan = new Scanner(System.in);
 
     /*Using method overloading, the method accepts a StaffID object and adds it into the database if it's not null. An 
@@ -18,6 +20,7 @@ public class IDDatabase {
     public void add(StaffID givenStaffID){
         boolean IDExists = false;
         if(givenStaffID != null){
+            //for loop checks the IDNumber of each ID object in the arrayList and checks if it is equal to the IDNumber of the givenID
             for(int i=0; i < database.size(); i++) {
                 if(database.get(i).getIDNumber().equalsIgnoreCase(givenStaffID.getIDNumber())) {
                     IDExists = true;
@@ -25,9 +28,11 @@ public class IDDatabase {
                 }
             }
             if(IDExists) {
+                //if the boolean IDExists is true then a duplicate error is displayed
                 System.out.println("ERROR: ID number already exists");
             }
             else {
+                //if the boolean IDExists is false then the givenID is added to the database
                 database.add(givenStaffID);
             }
         }
@@ -41,6 +46,7 @@ public class IDDatabase {
     public void add(FacultyID givenFacultyID){
         boolean IDExists = false;
         if(givenFacultyID != null){
+            //for loop checks the IDNumber of each ID object in the arrayList and checks if it is equal to the IDNumber of the givenID
             for(int i=0; i < database.size(); i++) {
                 if(database.get(i).getIDNumber().equalsIgnoreCase(givenFacultyID.getIDNumber())) {
                     IDExists = true;
@@ -48,9 +54,11 @@ public class IDDatabase {
                 }
             }
             if(IDExists) {
+                //if the boolean IDExists is true then a duplicate error is displayed
                 System.out.println("ERROR: ID number already exists");
             }
             else {
+                //if the boolean IDExists is false then the givenID is added to the database
                 database.add(givenFacultyID);
             }
         }
@@ -64,6 +72,7 @@ public class IDDatabase {
     public void add(StudentID givenStudentID){
        boolean IDExists = false;
         if(givenStudentID != null){
+            //for loop checks the IDNumber of each ID object in the arrayList and checks if it is equal to the IDNumber of the givenID
             for(int i=0; i < database.size(); i++) {
                 if(database.get(i).getIDNumber().equalsIgnoreCase(givenStudentID.getIDNumber())) {
                     IDExists = true;
@@ -71,9 +80,11 @@ public class IDDatabase {
                 }
             }
             if(IDExists) {
+                //if the boolean IDExists is true then a duplicate error is displayed
                 System.out.println("ERROR: ID number already exists");
             }
             else {
+                //if the boolean IDExists is false then the givenID is added to the database
                 database.add(givenStudentID);
             }
        }
@@ -102,9 +113,9 @@ public class IDDatabase {
                 while(scanFile.hasNextLine()){
                     //Variable that stores the contents of the current file line
                     String line = scanFile.nextLine();
-                    //Checls if the file line is empty
+                    //Checks if the file line is empty
                     if(line != null && !(line.equals(""))){
-                        //splits the current line of the file into an array of strings using the split method. The split method splits the line based of ","
+                        //splits the current line of the file into an array of strings using the split method. The split method splits the line based off ","
                         String [] lineAsArray = line.split(",");
                         //Checks if new array is not null and is exactly a length of 6. If the length is not 6, an error will be displayed
                         if(lineAsArray != null && lineAsArray.length == 6){
@@ -126,6 +137,7 @@ public class IDDatabase {
                                     //Creates new StudentID object with the data collected from the line
                                     StudentID newStudentID = new StudentID(newIDType, newIDNumber, newFirstName, newLastName, newAge, newDegree);
                                     //Calls the method add() that adds StudentID objects into database
+                                    //for loop checks if there are any ID objects with the same IDNumber before adding to database
                                     for(int i=0; i < database.size(); i++) {
                                         if(database.get(i).getIDNumber().equalsIgnoreCase(newStudentID.getIDNumber())) {
                                             IDExists = true;
@@ -133,9 +145,11 @@ public class IDDatabase {
                                         }
                                     }
                                     if(IDExists) {
+                                        //if boolean IDExists is true then a duplicate error is displayed and ID is not added to database
                                         System.out.println("ERROR: ID number already exists");
                                     }
                                     else {
+                                        //if boolean IDExists is false then the ID object is added to the database
                                     add(newStudentID);
                                     }
                                     System.out.println("Success!");
@@ -146,6 +160,7 @@ public class IDDatabase {
                                     //Creates new FacultyID object with the data collected from line
                                     FacultyID newFacultyID = new FacultyID(newIDType, newIDNumber, newFirstName, newLastName, newAge, newDepartment);
                                     //Calls the method add() that adds FacultyID objects into database
+                                    //for loop checks if there are any ID objects with the same IDNumber before adding to database
                                     for(int i=0; i < database.size(); i++) {
                                         if(database.get(i).getIDNumber().equalsIgnoreCase(newFacultyID.getIDNumber())) {
                                             IDExists = true;
@@ -153,9 +168,11 @@ public class IDDatabase {
                                         }
                                     }
                                     if(IDExists) {
+                                        //if boolean IDExists is true then a duplicate error is displayed and ID is not added to database
                                         System.out.println("ERROR: ID number already exists");
                                     }
                                     else {
+                                        //if boolean IDExists is false then the ID object is added to the database
                                     add(newFacultyID);
                                     }
                                     System.out.println("Success!");
@@ -165,6 +182,7 @@ public class IDDatabase {
                                     //Creates new StaffID object with the data collected from line
                                     StaffID newStaffID = new StaffID(newIDType, newIDNumber, newFirstName, newLastName, newAge, newSalary);
                                     //Calls the method add() that adds StaffID objects into database
+                                    //for loop checks if there are any ID objects with the same IDNumber before adding to database
                                     for(int i=0; i < database.size(); i++) {
                                         if(database.get(i).getIDNumber().equalsIgnoreCase(newStaffID.getIDNumber())) {
                                             IDExists = true;
@@ -172,9 +190,11 @@ public class IDDatabase {
                                         }
                                     }
                                     if(IDExists) {
+                                        //if boolean IDExists is true then a duplicate error is displayed and ID is not added to database
                                         System.out.println("ERROR: ID number already exists");
                                     }
                                     else {
+                                        //if boolean IDExists is false then the ID object is added to the database
                                     add(newStaffID);
                                     }
                                     System.out.println("Success!"); 
@@ -213,7 +233,7 @@ public class IDDatabase {
             //for(int j = i + 1; j < database.size(); j++){
 
             if(database.get(i).getLastName().equalsIgnoreCase(database.get(i+1).getLastName())){
-                //If found, the user is prompted to give A number within the A 
+                //If found, the user is prompted to give A number without the A 
                 System.out.println("People with the same last name. Input A number (Do not include the A)"); 
                 int newID = scan.nextInt();
                 //Method call for other removeID method (accepts an int that represents the number of an ID)
@@ -238,7 +258,9 @@ public class IDDatabase {
         scan.nextLine();
         String temp = "A" + String.valueOf(inputtedID);
         for(int i = 0; i < database.size(); i++){
+            // for loop checks each ID Object's IDNumber to see if it matches inputtedID
             if(database.get(i).getIDNumber().equals(temp)){
+                //if the IDNumbers match, then that ID object is removed
                 database.remove(i);
                 System.out.println("Success!");
             }

@@ -89,6 +89,7 @@ public class IDDatabaseApp {
                 //displays main menu again after 
                 mainMenu();
             }
+            //if id type is "F" it will ask for department
             else if(IDType.equalsIgnoreCase("F")){
                 System.out.println("What is faculty's department?");
                 department = scan.nextLine();
@@ -96,6 +97,7 @@ public class IDDatabaseApp {
                 myIDDatabase.add(newFaculty);
                 mainMenu();
             }
+            //if id type is "T" it will ask for salary
             else if(IDType.equalsIgnoreCase("T")){
                 System.out.println("What is the staff's salary?");
                 salary = scan.nextInt();
@@ -118,6 +120,7 @@ public class IDDatabaseApp {
         String lastName;
 
         try{
+            //prompts the user for how they want to remove an id
             System.out.println("Do you want to remove ID through last name (1), ANumber (2), or return to main menu? (3)");
             userChoice = scan.nextInt();
             scan.nextLine();
@@ -153,6 +156,7 @@ public class IDDatabaseApp {
         String IDType;
         int ageGreater;
         try{
+            //prompts the user for how they want to show/display ID's
             System.out.println("Do you want to show all IDs (1), IDs of certain ID type (2), IDs of age greater than (3), or return to main menu? (4)");
             userChoice = scan.nextInt();
             scan.nextLine();
@@ -201,6 +205,7 @@ public class IDDatabaseApp {
 
    public static void fileAdd(){
         String fileName;
+        //prompts user to input a file name
         System.out.println("Enter file name that you want to load into the database");
         fileName = scan.nextLine();
         myIDDatabase.add(fileName);

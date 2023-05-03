@@ -6,7 +6,7 @@ public class StudentID extends ID{
         super(inputtedIDType, inputtedID, inputtedFirstName, inputtedLastName, inputtedAge);
         //first checks if given degree is empty
         if(inputtedDegree.equals("") || inputtedDegree == null){
-            //Error message displated when degree is empty
+            //Error message displayed when degree is empty
             System.out.println("ERROR: An empty string was provided for a degree.");
         }
         else{

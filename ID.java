@@ -6,7 +6,7 @@ public abstract class ID implements Printable{
     protected int age;
     //Constructor that accepts ID type, ID number, first/last name, and age. These values are validated
     public ID(String inputtedIDType, String inputtedID, String inputtedFirstName, String inputtedLastName, int inputtedAge){
-        //Checls if given ID type exists from the pre-determined ones
+        //Checks if given ID type exists from the pre-determined ones
         if(inputtedIDType.equalsIgnoreCase("F") || inputtedIDType.equalsIgnoreCase("S") || inputtedIDType.equalsIgnoreCase("T")){
             IDType = inputtedIDType;
         }
