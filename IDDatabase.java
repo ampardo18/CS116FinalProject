@@ -4,7 +4,6 @@ import java.io.FileOutputStream;
 import java.io.File;
 import java.util.Scanner;
 import java.io.PrintWriter;
-import java.io.FileOutputStream;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.io.ByteArrayOutputStream;
@@ -17,8 +16,20 @@ public class IDDatabase {
     /*Using method overloading, the method accepts a StaffID object and adds it into the database if it's not null. An 
     error will be displayed if object is null.*/
     public void add(StaffID givenStaffID){
+        boolean IDExists = false;
         if(givenStaffID != null){
-            database.add(givenStaffID);
+            for(int i=0; i < database.size(); i++) {
+                if(database.get(i).getIDNumber().equalsIgnoreCase(givenStaffID.getIDNumber())) {
+                    IDExists = true;
+                    break;
+                }
+            }
+            if(IDExists) {
+                System.out.println("ERROR: ID number already exists");
+            }
+            else {
+                database.add(givenStaffID);
+            }
         }
         else{
             //Error displayed when the StaffID object given is null
@@ -28,8 +39,20 @@ public class IDDatabase {
     /*Using method overloading, the method accepts a FacultyID object and adds it into the database if it's not null. An 
     error will be displayed if object is null.*/
     public void add(FacultyID givenFacultyID){
+        boolean IDExists = false;
         if(givenFacultyID != null){
-            database.add(givenFacultyID);
+            for(int i=0; i < database.size(); i++) {
+                if(database.get(i).getIDNumber().equalsIgnoreCase(givenFacultyID.getIDNumber())) {
+                    IDExists = true;
+                    break;
+                }
+            }
+            if(IDExists) {
+                System.out.println("ERROR: ID number already exists");
+            }
+            else {
+                database.add(givenFacultyID);
+            }
         }
         else{
             //Error displayed when the FacultyID object given is null
@@ -39,8 +62,20 @@ public class IDDatabase {
     /*Using method overloading, the method accepts a StudentID object and adds it into the database if it's not null. An 
     error will be displayed if object is null.*/
     public void add(StudentID givenStudentID){
-       if(givenStudentID != null){
-            database.add(givenStudentID);
+       boolean IDExists = false;
+        if(givenStudentID != null){
+            for(int i=0; i < database.size(); i++) {
+                if(database.get(i).getIDNumber().equalsIgnoreCase(givenStudentID.getIDNumber())) {
+                    IDExists = true;
+                    break;
+                }
+            }
+            if(IDExists) {
+                System.out.println("ERROR: ID number already exists");
+            }
+            else {
+                database.add(givenStudentID);
+            }
        }
        else{
         //Error displayed when the StudentID object given is null
@@ -51,8 +86,8 @@ public class IDDatabase {
     Using method overloading, the method accepts a file name and creates a respective ID object based on ID type and if
     all data within line is valid.
      */
-    public void add(String inputtedFileName){
-    
+    public void add(String inputtedFileName){ 
+        boolean IDExists = false;
         /*
          Initilly checks if file name provided is empty
          */
@@ -91,7 +126,18 @@ public class IDDatabase {
                                     //Creates new StudentID object with the data collected from the line
                                     StudentID newStudentID = new StudentID(newIDType, newIDNumber, newFirstName, newLastName, newAge, newDegree);
                                     //Calls the method add() that adds StudentID objects into database
+                                    for(int i=0; i < database.size(); i++) {
+                                        if(database.get(i).getIDNumber().equalsIgnoreCase(newStudentID.getIDNumber())) {
+                                            IDExists = true;
+                                            break;
+                                        }
+                                    }
+                                    if(IDExists) {
+                                        System.out.println("ERROR: ID number already exists");
+                                    }
+                                    else {
                                     add(newStudentID);
+                                    }
                                     System.out.println("Success!");
                                 }
                                 else if(newIDType.equalsIgnoreCase("F")){
@@ -100,7 +146,18 @@ public class IDDatabase {
                                     //Creates new FacultyID object with the data collected from line
                                     FacultyID newFacultyID = new FacultyID(newIDType, newIDNumber, newFirstName, newLastName, newAge, newDepartment);
                                     //Calls the method add() that adds FacultyID objects into database
+                                    for(int i=0; i < database.size(); i++) {
+                                        if(database.get(i).getIDNumber().equalsIgnoreCase(newFacultyID.getIDNumber())) {
+                                            IDExists = true;
+                                            break;
+                                        }
+                                    }
+                                    if(IDExists) {
+                                        System.out.println("ERROR: ID number already exists");
+                                    }
+                                    else {
                                     add(newFacultyID);
+                                    }
                                     System.out.println("Success!");
                                 }
                                 else if(newIDType.equalsIgnoreCase("T")){
@@ -108,7 +165,18 @@ public class IDDatabase {
                                     //Creates new StaffID object with the data collected from line
                                     StaffID newStaffID = new StaffID(newIDType, newIDNumber, newFirstName, newLastName, newAge, newSalary);
                                     //Calls the method add() that adds StaffID objects into database
+                                    for(int i=0; i < database.size(); i++) {
+                                        if(database.get(i).getIDNumber().equalsIgnoreCase(newStaffID.getIDNumber())) {
+                                            IDExists = true;
+                                            break;
+                                        }
+                                    }
+                                    if(IDExists) {
+                                        System.out.println("ERROR: ID number already exists");
+                                    }
+                                    else {
                                     add(newStaffID);
+                                    }
                                     System.out.println("Success!"); 
                                 }
                             }catch(NumberFormatException error){
