@@ -123,10 +123,6 @@ public class IDDatabaseApp {
             scan.nextLine();
             switch(userChoice){
                 case 1:
-                    //This method gives a NoSuchElement Exception when trying to remove ID based on last name
-                    //the issue involves something with the mainMenu() method, but this issue is not presented in any other method where the method call is used
-                    //this specific choice is the only one that causes this
-                    //Even the removal of the ID through last name is successful
                     System.out.println("Enter last name of the person");
                     lastName = scan.nextLine();
                     myIDDatabase.removeID(lastName);

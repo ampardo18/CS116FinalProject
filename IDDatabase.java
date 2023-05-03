@@ -11,7 +11,7 @@ import java.io.PrintStream;
 
 public class IDDatabase {
     protected ArrayList<ID> database = new ArrayList<ID>();
-    //GENERAL: Need to figure out how to not add duplicates
+    Scanner scan = new Scanner(System.in);
 
     /*Using method overloading, the method accepts a StaffID object and adds it into the database if it's not null. An 
     error will be displayed if object is null.*/
@@ -207,7 +207,6 @@ public class IDDatabase {
     have the same last name, an ID number will be asked for so it can be removed through A number;
      */
     public void removeID(String inputtedLastName){
-        Scanner scan = new Scanner(System.in);
         //for loop used to check for duplicate last names within database
         for(int i = 0; i < database.size(); i++){
             //checks for duplicate last names within database
@@ -230,13 +229,13 @@ public class IDDatabase {
                 }
             }       
         }
-        scan.close();
     }
     /*
     Using method overloading, this method accepts the number part of an ID and removes the specific ID tied
     to that ANumber from within the database.
      */
     public void removeID(int inputtedID){
+        scan.nextLine();
         String temp = "A" + String.valueOf(inputtedID);
         for(int i = 0; i < database.size(); i++){
             if(database.get(i).getIDNumber().equals(temp)){
