@@ -227,40 +227,44 @@ public class IDDatabase {
     have the same last name, an ID number will be asked for so it can be removed through A number;
      */
     public void removeID(String inputtedLastName){
-        //checks if database is empty
-        if(database.size() != 0){
-            //for loop used to check for duplicate last names within database
-            for(int i = 0; i < database.size(); i++){
-                //checks for duplicate last names within database
-                //for(int j = i + 1; j < database.size(); j++){
-
-                if(database.get(i).getLastName().equalsIgnoreCase(database.get(i+1).getLastName())){
-                    //If found, the user is prompted to give A number without the A 
-                    System.out.println("People with the same last name. Input A number (Do not include the A)"); 
-                    int newID = scan.nextInt();
-                    //Method call for other removeID method (accepts an int that represents the number of an ID)
-                    removeID(newID);
-                    break;
-                }
-                    else{
-                    //If database does not have any duplicate last names, the ID is removed through last name
-                    if(database.get(i).getLastName().equalsIgnoreCase(inputtedLastName)){
-                        database.remove(i);
-                        System.out.println("Success!");
+        try{
+            //checks if database is empty
+            if(database.size() != 0){
+                //for loop used to check for duplicate last names within database
+                for(int i = 0; i < database.size(); i++){
+                    //checks for duplicate last names within database
+                    if(database.get(i).getLastName().equalsIgnoreCase(database.get(i+1).getLastName())){
+                        //If found, the user is prompted to give A number without the A 
+                        System.out.println("People with the same last name. Input A number (Do not include the A)"); 
+                        int newID = scan.nextInt();
+                        //Method call for other removeID method (accepts an int that represents the number of an ID)
+                        removeID(newID);
                         break;
                     }
-                }
-            }    
+                        else{
+                        //If database does not have any duplicate last names, the ID is removed through last name
+                        if(database.get(i).getLastName().equalsIgnoreCase(inputtedLastName)){
+                            database.remove(i);
+                            System.out.println("Success!");
+                            break;
+                        }
+                    }
+                }    
+            }
+            else{
+                System.out.println("Database is empty");
+            } 
         }
-        else{
-            System.out.println("Database is empty");
-        }    
+        catch(IndexOutOfBoundsException error){
+            System.out.println("ERROR: Person does not exist within database.");
+        }  
     }
     /*
     Using method overloading, this method accepts the number part of an ID and removes the specific ID tied
     to that ANumber from within the database.
      */
     public void removeID(int inputtedID){
+        boolean found = false;
         String temp = "A" + String.valueOf(inputtedID);
         //checks if database is empty
         if(database.size() != 0){
@@ -270,7 +274,11 @@ public class IDDatabase {
                     //if the IDNumbers match, then that ID object is removed
                     database.remove(i);
                     System.out.println("Success!");
+                    found = true;
                 }
+            }
+            if(!found){
+                System.out.println("ERROR: Person does not exist within database.");
             }
         }
         else{
