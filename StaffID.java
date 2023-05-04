@@ -7,7 +7,7 @@ public class StaffID extends ID{
         //checks if salary given is negative
         if(inputtedSalary > 0){
             salary = inputtedSalary;
-            //System.out.println("Success!");
+            System.out.println("Success!");
         }
         //error message displayed if salary provided is negative
         else{

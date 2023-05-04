@@ -114,7 +114,9 @@ public class IDDatabaseApp {
             mainMenu();
         }
    }
-
+    /*
+        method that prompts the user how they want to remove an ID from database
+    */
    public static void removeID(){
         int userChoice, IDNumber;
         String lastName;
@@ -124,6 +126,7 @@ public class IDDatabaseApp {
             System.out.println("Do you want to remove ID through last name (1), ANumber (2), or return to main menu? (3)");
             userChoice = scan.nextInt();
             scan.nextLine();
+            //goes to specific case based on user input
             switch(userChoice){
                 case 1:
                     System.out.println("Enter last name of the person");
@@ -160,6 +163,7 @@ public class IDDatabaseApp {
             System.out.println("Do you want to show all IDs (1), IDs of certain ID type (2), IDs of age greater than (3), or return to main menu? (4)");
             userChoice = scan.nextInt();
             scan.nextLine();
+            //goes to specific case based on user input
             switch(userChoice){
                 case 1:
                     myIDDatabase.show();
@@ -176,7 +180,6 @@ public class IDDatabaseApp {
                         System.out.println("ERROR: Cannot print anything from database because ID type given does not exist");
                         mainMenu();
                     }
-                
                     break;
                 case 3:
                     System.out.println("Enter an age that will display IDs that have an age greater than");
@@ -202,7 +205,7 @@ public class IDDatabaseApp {
             mainMenu();
         }
    }
-
+   //Method that allows user to add multiple ids through a file
    public static void fileAdd(){
         String fileName;
         //prompts user to input a file name
@@ -211,7 +214,7 @@ public class IDDatabaseApp {
         myIDDatabase.add(fileName);
         mainMenu();
    }
-
+   //method that allows user to save current ids within database into a file
    public static void fileSave(){
         myIDDatabase.saveIDs();
    }

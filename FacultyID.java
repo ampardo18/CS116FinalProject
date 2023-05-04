@@ -7,6 +7,7 @@ public class FacultyID extends ID{
     public FacultyID(String inputtedIDType, String inputtedID, String inputtedFirstName, String inputtedLastName, int inputtedAge, String inputtedDepartment){
         //calls super constructor from ID class to input all of these variables to its constructor
         super(inputtedIDType, inputtedID, inputtedFirstName, inputtedLastName, inputtedAge);
+        boolean found = false;
         //first checks if department given is not empty
         if(inputtedDepartment.equals("") || inputtedDepartment == null){
             //Error message displayed when string is empty
@@ -17,15 +18,15 @@ public class FacultyID extends ID{
                 //Checks if given department exists by moving through each element of the array
                 if(inputtedDepartment.equalsIgnoreCase(IITDepartments[i])){
                     department = inputtedDepartment;
-                    //System.out.println("Success!");
+                    System.out.println("Success!");
+                    found = true;
                     break;
                 }
-                else{
+            }  
+            if(!found){
                     //error message displayed when department provided does not exist
-                    //System.out.println("ERROR: Department provided does not exist."); 
-                    
-                }
-            }   
+                    System.out.println("ERROR: Department provided does not exist.");    
+                } 
         }
     }
     //getter for department

@@ -13,7 +13,7 @@ public class StudentID extends ID{
             //Checks if degree matches with the pre-determined ones
             if(inputtedDegree.equalsIgnoreCase("BSc") || inputtedDegree.equalsIgnoreCase("MSc") || inputtedDegree.equalsIgnoreCase("PhD")){
                 degree = inputtedDegree;
-                //System.out.println("Success!");
+                System.out.println("Success!");
             }
             else{
                 //error message displayed when degree does not exist

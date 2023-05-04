@@ -227,43 +227,54 @@ public class IDDatabase {
     have the same last name, an ID number will be asked for so it can be removed through A number;
      */
     public void removeID(String inputtedLastName){
-        //for loop used to check for duplicate last names within database
-        for(int i = 0; i < database.size(); i++){
-            //checks for duplicate last names within database
-            //for(int j = i + 1; j < database.size(); j++){
+        //checks if database is empty
+        if(database.size() != 0){
+            //for loop used to check for duplicate last names within database
+            for(int i = 0; i < database.size(); i++){
+                //checks for duplicate last names within database
+                //for(int j = i + 1; j < database.size(); j++){
 
-            if(database.get(i).getLastName().equalsIgnoreCase(database.get(i+1).getLastName())){
-                //If found, the user is prompted to give A number without the A 
-                System.out.println("People with the same last name. Input A number (Do not include the A)"); 
-                int newID = scan.nextInt();
-                //Method call for other removeID method (accepts an int that represents the number of an ID)
-                removeID(newID);
-                break;
-            }
-            else{
-                //If database does not have any duplicate last names, the ID is removed through last name
-                if(database.get(i).getLastName().equalsIgnoreCase(inputtedLastName)){
-                    database.remove(i);
-                    System.out.println("Success!");
+                if(database.get(i).getLastName().equalsIgnoreCase(database.get(i+1).getLastName())){
+                    //If found, the user is prompted to give A number without the A 
+                    System.out.println("People with the same last name. Input A number (Do not include the A)"); 
+                    int newID = scan.nextInt();
+                    //Method call for other removeID method (accepts an int that represents the number of an ID)
+                    removeID(newID);
                     break;
                 }
-            }       
+                    else{
+                    //If database does not have any duplicate last names, the ID is removed through last name
+                    if(database.get(i).getLastName().equalsIgnoreCase(inputtedLastName)){
+                        database.remove(i);
+                        System.out.println("Success!");
+                        break;
+                    }
+                }
+            }    
         }
+        else{
+            System.out.println("Database is empty");
+        }    
     }
     /*
     Using method overloading, this method accepts the number part of an ID and removes the specific ID tied
     to that ANumber from within the database.
      */
     public void removeID(int inputtedID){
-        scan.nextLine();
         String temp = "A" + String.valueOf(inputtedID);
-        for(int i = 0; i < database.size(); i++){
-            // for loop checks each ID Object's IDNumber to see if it matches inputtedID
-            if(database.get(i).getIDNumber().equals(temp)){
-                //if the IDNumbers match, then that ID object is removed
-                database.remove(i);
-                System.out.println("Success!");
+        //checks if database is empty
+        if(database.size() != 0){
+            for(int i = 0; i < database.size(); i++){
+                // for loop checks each ID Object's IDNumber to see if it matches inputtedID
+                if(database.get(i).getIDNumber().equals(temp)){
+                    //if the IDNumbers match, then that ID object is removed
+                    database.remove(i);
+                    System.out.println("Success!");
+                }
             }
+        }
+        else{
+            System.out.println("Database is empty");
         }
     }
     //This method displayed the size of the database by using the method .size() for array lists
@@ -274,8 +285,14 @@ public class IDDatabase {
     Using method overloading, this method displays all the contents of the database
      */
     public void show(){
-        for(int i = 0; i < database.size(); i++){
-            database.get(i).print();
+        //checks if database is empty
+        if(database.size() != 0){
+            for(int i = 0; i < database.size(); i++){
+                database.get(i).print();
+            }
+        }
+        else{
+            System.out.println("Database is empty");
         }
         
     }
@@ -284,25 +301,36 @@ public class IDDatabase {
     and prints their contents
      */
     public void show(String inputtedIDType){
-       //Checks if ID type provided exists from the pre-determined ones
-       
-        for(int i = 0; i < database.size(); i++){
-            //Checking every object's ID type and determining if it equals to the provided ID type
-            if(database.get(i).getIDType().equalsIgnoreCase(inputtedIDType)){
-                database.get(i).print();
+        //checks if database is empty
+        if(database.size() != 0){
+           //Checks if ID type provided exists from the pre-determined ones
+            for(int i = 0; i < database.size(); i++){
+                //Checking every object's ID type and determining if it equals to the provided ID type
+                if(database.get(i).getIDType().equalsIgnoreCase(inputtedIDType)){
+                    database.get(i).print();
+                }
             }
-        }     
+        } 
+        else{
+            System.out.println("Database is empty");
+        } 
+            
     }
     /*
     Using method overloading, this method accepts an age as an argument and displays all IDs that are above the provided age.
      */
     public void show(int certainAge){
-       
-        for(int i = 0; i < database.size(); i++){
-            //Checks each object's age and if it is greater than the age given. If so, the contents of the ID is printed
-            if(database.get(i).getAge() > certainAge){
-                database.get(i).print();
+        //checks if database is empty
+        if(database.size() != 0){
+            for(int i = 0; i < database.size(); i++){
+                //Checks each object's age and if it is greater than the age given. If so, the contents of the ID is printed
+                if(database.get(i).getAge() > certainAge){
+                    database.get(i).print();
+                }
             }
+        }
+        else{
+            System.out.println("Datbase is empty");
         }
     }
 
